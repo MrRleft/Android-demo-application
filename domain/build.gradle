@@ -1,0 +1,16 @@
+
+apply plugin: 'java-library'
+
+apply plugin: 'kotlin'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def mainApplication = rootProject.ext.mainApplication
+    def androidX = rootProject.ext.androidX
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.10"
+    implementation mainApplication.coroutines
+    implementation mainApplication.coroutines_android
+}

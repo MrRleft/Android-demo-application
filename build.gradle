@@ -1,16 +1,85 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
   ext.kotlin_version = "1.4.32"
+
+  ext {
+    kotlin_version = '1.4.31'
+    glide_version = '4.12.0'
+    app_compat_version = '1.1.0'
+    ktx_version = '1.1.0'
+    constraint_version = '2.1.0-beta02'
+    junit_version = '4.13.2'
+    junit_ext_version = '1.1.2'
+    expresso_ext_version = '3.3.0'
+    coroutine_version = '1.3.2'
+    nav_version = '2.4.0-alpha02'
+    legacy_version = '1.0.0'
+    play_map_version = '17.0.0'
+    play_map_utils_version = '0.5'
+    location_version = '17.0.0'
+    lifecycle_version = '2.3.1'
+    retrofit_version = '2.9.0'
+    gson_version = '2.8.6'
+    room_version = "2.2.0-beta01"
+    circle_image_version = "3.1.0"
+    material_version = '1.4.0-rc01'
+    dexter_version = "6.0.2"
+    viewpager_version = '1.1.0-alpha01'
+    koin_version = '2.0.1'
+    android_network = '0.4.5'
+    crypto_version = '1.0.0-rc02'
+    qr_reader_version = '2.0.3'
+    parse_version = "1.21.0"
+    firebase_sdk = "17.4.4"
+    firebase_messaging = "20.2.3"
+    firebase_crashlytics = "17.1.1"
+    hilt_version = "2.36"
+
+    mainApplication = [
+        kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+        glide             : "com.github.bumptech.glide:glide:$glide_version",
+        glide_compiler    : "com.github.bumptech.glide:compiler:$glide_version",
+        coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version",
+        coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version",
+        retrofit          : "com.squareup.retrofit2:retrofit:$retrofit_version",
+        retrofit_gson     : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+        gson              : "com.google.code.gson:gson:$gson_version",
+        material          : "com.google.android.material:material:$material_version",
+        hilt              : "com.google.dagger:hilt-android-compiler:$hilt_version"
+    ]
+
+    androidX = [
+        appCompat          : "androidx.appcompat:appcompat:$app_compat_version",
+        ktx                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+        constraintlayout   : "androidx.constraintlayout:constraintlayout:$constraint_version",
+        junit_test         : "androidx.test.ext:junit:$junit_ext_version",
+        expresso           : "androidx.test.espresso:espresso-core:$expresso_ext_version",
+        navigation_fragment: "androidx.navigation:navigation-fragment:$nav_version",
+        navigation_ui      : "androidx.navigation:navigation-ui-ktx:$nav_version",
+        viewpager          : "androidx.viewpager2:viewpager2:$viewpager_version",
+        viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+        legacy             : "androidx.legacy:legacy-support-v4:$legacy_version",
+        livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+        room               : "androidx.room:room-runtime:$room_version",
+        room_compiler      : "androidx.room:room-compiler:$room_version"
+    ]
+
+    test = [
+        junit: "junit:junit:$junit_version"
+    ]
+  }
+
   repositories {
     google()
     jcenter()
+    maven {
+      url 'https://maven.google.com/'
+      name 'Google'
+    }
   }
   dependencies {
-    classpath "com.android.tools.build:gradle:4.1.0"
+    classpath "com.android.tools.build:gradle:4.1.3"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
   }
 }
 
@@ -18,6 +87,8 @@ allprojects {
   repositories {
     google()
     jcenter()
+    maven { url 'https://jitpack.io' }
+
   }
 }
 

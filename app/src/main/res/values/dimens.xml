@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ App Android
+  ~ Copyright (C) 2021 Banco Caminos
+  ~ All Rights Reserved, unauthorized copying of this file, via any medium is strictly prohibited.
+  ~ Proprietary and confidential.
+  ~ Written by Banco Caminos <https://www.bancocaminos.es>, 2021
+  -->
+<resources>
+ <dimen name="headerTitle">20sp</dimen>
+ <dimen name="headerMargin">14dp</dimen>
+ <dimen name="strokeLineCK">3dp</dimen>
+ <dimen name="borderRadius">3dp</dimen>
+ <dimen name="borderRadiusCK">3dp</dimen>
+ <dimen name="borderRadiusBGG">12dp</dimen>
+
+ <dimen name="viewpager_next_item_visible">40dp</dimen>
+ <dimen name="viewpager_next_item_visible_card">60dp</dimen>
+ <dimen name="viewpager_current_item_horizontal_margin">20dp</dimen>
+</resources>

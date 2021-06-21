@@ -1,3 +1,3 @@
 package com.rizq.android.data
 
-class LocalDataSource {}
+interface LocalDataInteface {}

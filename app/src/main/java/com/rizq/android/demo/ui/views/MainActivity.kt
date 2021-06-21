@@ -1,7 +1,8 @@
-package com.rizq.android.demo
+package com.rizq.android.demo.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rizq.android.demo.R
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

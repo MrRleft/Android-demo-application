@@ -12,3 +12,8 @@ abstract class UseCase<out Type, in Params> where Type : Any {
     abstract suspend fun run(params: Params): Either<Failure, Type>
     suspend fun execute(params: Params): Either<Failure, Type> = run(params)
 }
+
+abstract class SimpleUseCase<out Type, in Params> where Type : Any {
+    abstract fun run(params: Params): Type
+    suspend fun execute(params: Params): Type = run(params)
+}

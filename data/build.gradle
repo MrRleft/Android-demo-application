@@ -14,6 +14,15 @@ dependencies {
   implementation project(':domain')
 
   def mainApplication = rootProject.ext.mainApplication
+  def test = rootProject.ext.test
 
   implementation mainApplication.kotlin
+
+  testImplementation test.junit
+  testImplementation test.coroutines_test
+  testImplementation test.jupiter
+  testImplementation test.mockito_inline
+  testImplementation test.mockito_core
+  testImplementation test.mockito_android
+  testImplementation test.mockito_junit
 }

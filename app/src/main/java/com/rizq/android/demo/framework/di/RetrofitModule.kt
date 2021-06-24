@@ -39,7 +39,7 @@ object RetrofitModule {
   @Provides
   @Singleton
   fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit =
-    Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(okHttpClient).build()
+    Retrofit.Builder().baseUrl(BuildConfig.BASE_GNB_URL).client(okHttpClient).build()
 
   @Provides
   @Singleton

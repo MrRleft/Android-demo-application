@@ -13,7 +13,8 @@ sealed class Failure {
 
     abstract class FeatureFailure : Failure()
 
-    class NullResult : FeatureFailure()
+    object NullResult : FeatureFailure()
+    object MissingRateFailure : FeatureFailure()
 }
 
 data class ErrorBodyParsed(val status: Int, val errorCode: String?, val errorDescription: String)

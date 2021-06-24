@@ -1,5 +1,7 @@
 package com.rizq.android.domain.models.local
 
-interface FutureObjectWithImage{
+interface LocalObjectInterface
+
+interface FutureObjectWithImage : LocalObjectInterface{
   abstract val imageURL: String
 }

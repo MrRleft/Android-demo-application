@@ -3,9 +3,10 @@ buildscript {
   ext.kotlin_version = "1.4.32"
 
   ext {
+    gradle_version = "4.2.0"
     kotlin_version = '1.4.31'
     glide_version = '4.12.0'
-    app_compat_version = '1.1.0'
+    app_compat_version = '1.3.0'
     ktx_version = '1.1.0'
     constraint_version = '2.1.0-beta02'
     junit_version = '4.13.2'
@@ -36,6 +37,7 @@ buildscript {
     hilt_version = "2.36"
     androidx_annotation = "1.2.0"
     mockito = "3.10.0"
+    jupiter_version = "5.7.0"
 
     mainApplication = [
         kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
@@ -70,8 +72,8 @@ buildscript {
 
     test = [
         junit: "junit:junit:$junit_version",
-        coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version}",
-        jupiter: "org.junit.jupiter:junit-jupiter-api:$junit_version",
+        coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version",
+        jupiter: "org.junit.jupiter:junit-jupiter:$jupiter_version",
         mockito_core: "org.mockito:mockito-core:$mockito",
         mockito_inline: "org.mockito:mockito-inline:$mockito",
         mockito_android: "org.mockito:mockito-android:$mockito",
@@ -81,24 +83,23 @@ buildscript {
 
   repositories {
     google()
-    jcenter()
+    mavenCentral()
     maven {
       url 'https://maven.google.com/'
       name 'Google'
     }
   }
   dependencies {
-    classpath "com.android.tools.build:gradle:4.1.3"
+    classpath "com.android.tools.build:gradle:$gradle_version"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-
   }
 }
 
 allprojects {
   repositories {
     google()
-    jcenter()
+    mavenCentral()
     maven { url 'https://jitpack.io' }
 
   }

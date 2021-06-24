@@ -84,5 +84,4 @@ dependencies {
 
   androidTestImplementation androidX.junit_test
   androidTestImplementation androidX.expresso
-
 }

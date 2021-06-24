@@ -30,7 +30,7 @@ class GNBRepository(val remoteDataSource: RemoteDataSource) {
     fullListRates.filter { rate -> rate.to != Currency.EUR }.forEach { pendingRates.add(it.from) }
     val distinctPendingCurrencies = pendingRates.distinct().toMutableList()
     var laps = 0
-    while(ratesReady.size < Currency.values().size || laps < Currency.values().size || !distinctPendingCurrencies.isEmpty()){
+    while(ratesReady.size < Currency.values().size && laps < Currency.values().size && !distinctPendingCurrencies.isEmpty()){
       distinctPendingCurrencies.forEach { currencyWithoutConversion ->
         tryToFindCFForOneCurrency(fullListRates, currencyWithoutConversion, ratesReady, distinctPendingCurrencies)
       }
@@ -45,7 +45,7 @@ class GNBRepository(val remoteDataSource: RemoteDataSource) {
                                         distinctPendingCurrencies: List<Currency>) {
     val availableInfoForOurRate = fullListRates.filter { rate -> rate.from == currencyWithoutConversion }
     availableInfoForOurRate.find { availableInfo ->
-      val inmediateConversionFactor = ratesReady.find { it.from == availableInfo.from }
+      val inmediateConversionFactor = ratesReady.find { it.from == availableInfo.to }
       if (inmediateConversionFactor != null) {
         val newConversionFactor = availableInfo.rate * inmediateConversionFactor.rate
         ratesReady.add(RatesLM(currencyWithoutConversion, newConversionFactor, Currency.EUR))

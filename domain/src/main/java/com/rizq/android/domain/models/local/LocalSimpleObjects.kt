@@ -4,7 +4,11 @@ data class RatesLM(
   val from: Currency,
   val rate: Double,
   val to: Currency
-): LocalObjectInterface
+): LocalObjectInterface {
+  fun equals(other: RatesLM): Boolean {
+    return from == other.from && rate == other.rate && to == other.to
+  }
+}
 
 data class TransactionsLM(
   val amount: Double,

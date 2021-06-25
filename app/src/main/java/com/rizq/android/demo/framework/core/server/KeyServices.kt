@@ -5,9 +5,11 @@ import retrofit2.http.*
 
 interface APIService {
 
+  @Headers("Content-Type: application/json")
   @GET("/transactions.json")
-  fun getTransactions(@Url url: String): Call<String>
+  fun getTransactions(): Call<String>
 
+  @Headers("Content-Type: application/json")
   @GET("/rates.json")
-  fun getRates(@Url url: String): Call<String>
+  fun getRates(): Call<String>
 }

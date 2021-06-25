@@ -4,7 +4,7 @@ import com.rizq.android.data.datasources.RemoteDataSource
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.local.*
 
-class GNBRepository(val remoteDataSource: RemoteDataSource) {
+class GNBRepository (val remoteDataSource: RemoteDataSource) {
 
   suspend fun getAllTransactions(): Either<Failure, List<TransactionsLM>> = remoteDataSource.getTransactionsGNB()
 

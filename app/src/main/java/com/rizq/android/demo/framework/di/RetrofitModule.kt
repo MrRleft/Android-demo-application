@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.*
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.security.cert.X509Certificate
 import java.util.concurrent.*
 import javax.inject.Singleton
@@ -18,7 +19,7 @@ object RetrofitModule {
 
   @Provides
   @Singleton
-  fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
+  fun provideOkHttpClient(): OkHttpClient {
     val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
       override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) = Unit
       override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) = Unit
@@ -32,14 +33,13 @@ object RetrofitModule {
     builder.sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
 
     builder.hostnameVerifier { _, _ -> true }
-    builder.addNetworkInterceptor(interceptor)
     return builder.connectTimeout(30L, TimeUnit.SECONDS).readTimeout(30L, TimeUnit.SECONDS).build()
   }
 
   @Provides
   @Singleton
   fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit =
-    Retrofit.Builder().baseUrl(BuildConfig.BASE_GNB_URL).client(okHttpClient).build()
+    Retrofit.Builder().addConverterFactory(ScalarsConverterFactory.create()).baseUrl(BuildConfig.BASE_GNB_URL).client(okHttpClient).build()
 
   @Provides
   @Singleton

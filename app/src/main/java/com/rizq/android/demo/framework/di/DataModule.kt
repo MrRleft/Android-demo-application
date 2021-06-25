@@ -1,6 +1,7 @@
 package com.rizq.android.demo.framework.di
 
 import com.rizq.android.data.datasources.*
+import com.rizq.android.data.repositories.GNBRepository
 import com.rizq.android.demo.framework.core.server.*
 import com.rizq.android.demo.framework.datasources.*
 import dagger.*
@@ -22,8 +23,12 @@ object DataModule {
 
   @Provides
   @Singleton
-  fun provideRetrofitDataSource(
+  fun provideRemoteDataSource(
     apiService: APIService,
     jsonServerParser: JsonServerParser,
   ): RemoteDataSource = RetrofitDataSourceImplementation(apiService, jsonServerParser)
+
+  @Provides
+  @Singleton
+  fun provideGNBRepository(remoteDataSource: RemoteDataSource): GNBRepository = GNBRepository(remoteDataSource)
 }

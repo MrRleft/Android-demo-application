@@ -3,6 +3,8 @@ plugins {
   id 'kotlin-android'
   id 'kotlin-parcelize'
   id 'kotlin-kapt'
+  id 'dagger.hilt.android.plugin'
+  id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -21,7 +23,6 @@ android {
 
   buildTypes {
     debug {
-
       buildConfigField "String", "BASE_GNB_URL", "\"http://quiet-stone-2094.herokuapp.com\""
     }
     release {
@@ -32,6 +33,7 @@ android {
   }
 
   buildFeatures {
+    viewBinding true
     dataBinding true
   }
 
@@ -58,6 +60,8 @@ dependencies {
   implementation mainApplication.coroutines_android
   implementation mainApplication.retrofit
   implementation mainApplication.retrofit_gson
+  implementation mainApplication.retrofit_converters_gson
+  implementation mainApplication.retrofit_converters_scalars
   implementation mainApplication.gson
   implementation mainApplication.material
   implementation mainApplication.hilt

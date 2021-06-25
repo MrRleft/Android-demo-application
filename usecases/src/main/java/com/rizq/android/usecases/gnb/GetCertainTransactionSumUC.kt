@@ -6,17 +6,14 @@ import com.rizq.android.domain.models.local.*
 import com.rizq.android.domain.models.local.Currency.*
 import kotlinx.coroutines.flow.Flow
 
-class GetCertainTransactionUC(val gnbRepository: GNBRepository, val bankersRoundingConversionSUC: BankersRoundingConversionSUC) :
-  UseCaseFlow<GetCertainTransactionUC.Params, GetCertainTransactionUC.ReturnParams>() {
+class GetCertainTransactionSumUC(val gnbRepository: GNBRepository, val bankersRoundingConversionSUC: BankersRoundingConversionSUC) :
+  UseCaseFlow<GetCertainTransactionSumUC.Params, GetCertainTransactionSumUC.ReturnParams>() {
 
-  data class Params(val transaction: String)
+  data class Params(val transaction: List<TransactionsLM>)
   data class ReturnParams(val totalValue: Double, val operations: List<TransactionsLM>)
 
   override suspend fun execute(params: Params): Flow<Either<Failure, ReturnParams>> {
-    return when (val res = gnbRepository.getCertainTransaction(params.transaction)) {
-      is Either.Left -> res
-      is Either.Right -> getRatesAndOperate(res.b)
-    }.asFlow()
+    return getRatesAndOperate(params.transaction).asFlow()
   }
 
   private suspend fun getRatesAndOperate(transactions: List<TransactionsLM>): Either<Failure, ReturnParams> {

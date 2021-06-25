@@ -37,14 +37,14 @@ class RetrofitDataSourceImplementation @Inject constructor(private val apiServic
 
   private inline fun <reified T> parseArrayToSM(result: Either.Right<ResponseWrapper<String>>) = if (result.b.value != null) {
     try {
-      jsonServerParser.parseArrayResponse<T>(JSONObject(result.b.value!!).getString("data"))
+      jsonServerParser.parseArrayResponse<T>(result.b.value!!)
     } catch (ex: Exception) {
       null
     }
   } else null
 
   override suspend fun getTransactionsGNB(): Either<Failure, List<TransactionsLM>> = withContext(Dispatchers.IO) {
-    safeRequest(apiService.getTransactions(BuildConfig.BASE_GNB_URL)) { result ->
+    safeRequest(apiService.getTransactions()) { result ->
       val domainModel: MutableList<TransactionsLM> = mutableListOf()
       parseArrayToSM<TransactionsSM>(result)?.forEach { domainModel += it.toDomain() }
       returnArrayResults(domainModel)
@@ -52,7 +52,7 @@ class RetrofitDataSourceImplementation @Inject constructor(private val apiServic
   }
 
   override suspend fun getRatesGNB(): Either<Failure, List<RatesLM>> = withContext(Dispatchers.IO) {
-    safeRequest(apiService.getRates(BuildConfig.BASE_GNB_URL)) { result ->
+    safeRequest(apiService.getRates()) { result ->
       val domainModel: MutableList<RatesLM> = mutableListOf()
       parseArrayToSM<RatesSM>(result)?.forEach { domainModel += it.toDomain() }
       returnArrayResults(domainModel)

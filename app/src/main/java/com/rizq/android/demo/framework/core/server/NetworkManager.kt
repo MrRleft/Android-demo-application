@@ -1,5 +1,8 @@
 package com.rizq.android.demo.framework.core.server
 
+import android.util.Log
+import android.util.Log.*
+import com.rizq.android.demo.BuildConfig.DEBUG
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.empty
 import com.rizq.android.domain.models.core.ResponseWrapper
@@ -24,6 +27,7 @@ interface NetworkManager {
           Either.Left(Failure.ErrorBody(request.code(), request.errorBody()?.string() ?: String.empty))
         }).flatMapToRight { rightResult -> functionCall.invoke(Either.Right(rightResult)) })
       } catch (ex: Exception) {
+        ex.message?.let { Log.d("ERROR", it) }
         Either.Left(Failure.ConnectivityError)
       }
 

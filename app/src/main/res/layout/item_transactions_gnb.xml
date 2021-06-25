@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto">
+
+ <data>
+  <variable
+   name="setNameOfSku"
+   type="String" />
+ </data>
+
+ <androidx.cardview.widget.CardView
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:backgroundTint="@color/darkBlue"
+  android:elevation="4dp"
+  app:cardCornerRadius="3dp"
+  app:cardPreventCornerOverlap="true"
+  app:cardUseCompatPadding="true">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content">
+
+   <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/nameTag"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:text="@string/sku"
+    android:textStyle="bold"
+    android:textColor="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+   <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/skuName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:text="@{setNameOfSku}"
+    android:textColor="@color/white"
+    app:layout_constraintStart_toEndOf="@+id/nameTag"
+    app:layout_constraintTop_toTopOf="@+id/nameTag" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+ </androidx.cardview.widget.CardView>
+</layout>

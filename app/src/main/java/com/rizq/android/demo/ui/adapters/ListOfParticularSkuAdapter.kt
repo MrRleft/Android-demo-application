@@ -23,7 +23,7 @@ class ListOfParticularSkuAdapter :
     fun onBind(item: TransactionsLM) {
       with(binding) {
         setNameOfSku = item.sku
-        setMoneyOfSku = item.amount.toString() + "€"
+        setMoneyOfSku = item.amount.toString() + item.currency.value
       }
     }
   }

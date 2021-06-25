@@ -16,6 +16,6 @@ data class TransactionsLM(
   val sku: String
 ): LocalObjectInterface
 
-enum class Currency{
-  USD, AUD, EUR, CAD
+enum class Currency (val value: String){
+  USD("\$"), AUD("A\$"), EUR("€"), CAD("Can\$");
 }

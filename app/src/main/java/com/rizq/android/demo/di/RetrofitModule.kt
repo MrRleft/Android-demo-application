@@ -1,7 +1,7 @@
-package com.rizq.android.demo.framework.di
+package com.rizq.android.demo.di
 
 import com.rizq.android.demo.BuildConfig
-import com.rizq.android.demo.framework.core.server.APIService
+import com.rizq.android.demo.data.server.APIService
 import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent

@@ -1,10 +1,7 @@
-package com.rizq.android.demo.framework.datasources
+package com.rizq.android.demo.data.server
 
-import android.util.Base64
 import com.google.gson.*
 import com.rizq.android.data.datasources.RemoteDataSource
-import com.rizq.android.demo.BuildConfig
-import com.rizq.android.demo.framework.core.server.*
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.core.ResponseWrapper
 import com.rizq.android.domain.models.local.*

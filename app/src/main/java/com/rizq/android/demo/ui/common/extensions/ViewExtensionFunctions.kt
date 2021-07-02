@@ -1,4 +1,4 @@
-package com.rizq.android.demo.ui.extensions
+package com.rizq.android.demo.ui.common.extensions
 
 import android.content.Context
 import android.graphics.*

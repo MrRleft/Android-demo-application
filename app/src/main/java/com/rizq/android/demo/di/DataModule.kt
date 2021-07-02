@@ -1,9 +1,9 @@
-package com.rizq.android.demo.framework.di
+package com.rizq.android.demo.di
 
 import com.rizq.android.data.datasources.*
 import com.rizq.android.data.repositories.GNBRepository
-import com.rizq.android.demo.framework.core.server.*
-import com.rizq.android.demo.framework.datasources.*
+import com.rizq.android.demo.data.local.RoomLocalDataSourceImplementation
+import com.rizq.android.demo.data.server.*
 import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent

@@ -1,4 +1,4 @@
-package com.rizq.android.demo.framework.core.server
+package com.rizq.android.demo.data.server
 
 import com.google.gson.*
 import com.rizq.android.domain.core.*

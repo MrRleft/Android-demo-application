@@ -1,8 +1,6 @@
-package com.rizq.android.demo.framework.core.server
+package com.rizq.android.demo.data.server
 
 import android.util.Log
-import android.util.Log.*
-import com.rizq.android.demo.BuildConfig.DEBUG
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.empty
 import com.rizq.android.domain.models.core.ResponseWrapper

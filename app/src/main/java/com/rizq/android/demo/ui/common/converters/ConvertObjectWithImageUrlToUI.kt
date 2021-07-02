@@ -1,11 +1,11 @@
-package com.rizq.android.demo.ui.converters
+package com.rizq.android.demo.ui.common.converters
 
 import android.content.Context
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.graphics.drawable.*
 import com.rizq.android.demo.R
-import com.rizq.android.demo.ui.extensions.getBitmapFromUrl
-import com.rizq.android.demo.ui.models.ItemWithImage
+import com.rizq.android.demo.ui.common.extensions.getBitmapFromUrl
+import com.rizq.android.demo.ui.common.models.ItemWithImage
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.local.FutureObjectWithImage
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.rizq.android.demo.framework.di
+package com.rizq.android.demo.di
 
 import com.rizq.android.data.repositories.GNBRepository
 import com.rizq.android.usecases.gnb.*

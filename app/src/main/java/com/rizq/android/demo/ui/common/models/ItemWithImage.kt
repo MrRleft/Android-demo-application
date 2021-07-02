@@ -1,4 +1,4 @@
-package com.rizq.android.demo.ui.models
+package com.rizq.android.demo.ui.common.models
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawable
 import com.rizq.android.domain.models.local.FutureObjectWithImage

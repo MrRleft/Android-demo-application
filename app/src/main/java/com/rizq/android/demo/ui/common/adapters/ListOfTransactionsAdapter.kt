@@ -1,4 +1,4 @@
-package com.rizq.android.demo.ui.adapters
+package com.rizq.android.demo.ui.common.adapters
 
 import android.view.*
 import androidx.recyclerview.widget.*

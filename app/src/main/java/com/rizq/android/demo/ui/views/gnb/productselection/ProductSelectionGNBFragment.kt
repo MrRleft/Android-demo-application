@@ -2,12 +2,11 @@ package com.rizq.android.demo.ui.views.gnb.productselection
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizq.android.demo.R
 import com.rizq.android.demo.databinding.*
-import com.rizq.android.demo.ui.adapters.ListOfTransactionsAdapter
+import com.rizq.android.demo.ui.common.adapters.ListOfTransactionsAdapter
 import com.rizq.android.domain.bankersRounding
 import com.rizq.android.domain.core.ScreenState
 import com.rizq.android.domain.models.local.TransactionsLM
@@ -66,7 +65,7 @@ class ProductSelectionGNBFragment : Fragment(R.layout.fragment_product_selection
   }
 
   private fun createDialogIndividualTransaction(amount: Double, transactions: List<TransactionsLM>) {
-    DialogIndividualProduct(transactions, amount.bankersRounding().toString()).show(this.childFragmentManager, "SKU")
+    IndividualProductDialog(transactions, amount.bankersRounding().toString()).show(this.childFragmentManager, "SKU")
   }
 
   private fun onClickOnTransaction(sku: String) {

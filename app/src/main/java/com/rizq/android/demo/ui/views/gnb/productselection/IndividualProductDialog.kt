@@ -6,12 +6,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizq.android.demo.R
 import com.rizq.android.demo.databinding.*
-import com.rizq.android.demo.ui.adapters.*
+import com.rizq.android.demo.ui.common.adapters.*
 import com.rizq.android.domain.models.local.TransactionsLM
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DialogIndividualProduct(private val transactions: List<TransactionsLM>, private val amount: String) :
+class IndividualProductDialog(private val transactions: List<TransactionsLM>, private val amount: String) :
   DialogFragment(R.layout.dialog_individual_product_gnb) {
 
   private lateinit var binding: DialogIndividualProductGnbBinding

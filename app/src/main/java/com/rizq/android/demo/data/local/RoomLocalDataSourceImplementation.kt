@@ -1,4 +1,4 @@
-package com.rizq.android.demo.framework.datasources
+package com.rizq.android.demo.data.local
 
 import com.rizq.android.data.datasources.LocalDataSource
 import javax.inject.Inject

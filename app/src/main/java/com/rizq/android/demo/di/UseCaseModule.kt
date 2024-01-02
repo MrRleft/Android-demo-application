@@ -1,6 +1,6 @@
 package com.rizq.android.demo.di
 
-import com.rizq.android.data.repositories.GNBRepository
+import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.usecases.gnb.*
 import dagger.*
 import dagger.hilt.InstallIn

@@ -1,12 +1,13 @@
 package com.rizq.android.usecases.gnb
 
-import com.rizq.android.data.repositories.GNBRepository
+import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.local.*
 import com.rizq.android.domain.models.local.Currency.*
 import kotlinx.coroutines.flow.Flow
 
-class GetCertainTransactionSumUC(val gnbRepository: GNBRepository, val bankersRoundingConversionSUC: BankersRoundingConversionSUC) :
+class GetCertainTransactionSumUC(private val gnbRepository: GNBRepository,
+                                 private val bankersRoundingConversionSUC: BankersRoundingConversionSUC) :
   UseCaseFlow<GetCertainTransactionSumUC.Params, GetCertainTransactionSumUC.ReturnParams>() {
 
   data class Params(val transaction: List<TransactionsLM>)
@@ -30,7 +31,7 @@ class GetCertainTransactionSumUC(val gnbRepository: GNBRepository, val bankersRo
       totalSum += if (transaction.currency == EUR) transaction.amount
       else {
         val conversionFactor = rates.find { rate -> rate.from == transaction.currency && rate.to == EUR }?.rate
-        if (conversionFactor == null) return Either.Left(Failure.MissingRateFailure)
+            ?: return Either.Left(Failure.MissingRateFailure)
         bankersRoundingConversionSUC.run(BankersRoundingConversionSUC.Params(transaction.amount, conversionFactor))
       }
     }

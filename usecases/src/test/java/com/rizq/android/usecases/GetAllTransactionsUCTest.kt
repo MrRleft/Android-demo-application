@@ -1,6 +1,6 @@
 package com.rizq.android.usecases
 
-import com.rizq.android.data.repositories.GNBRepository
+import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.domain.core.Either
 import com.rizq.android.domain.models.local.*
 import com.rizq.android.usecases.gnb.GetAllTransactionsUC
@@ -19,7 +19,7 @@ class GetAllTransactionsUCTest {
 
   lateinit var useCase: GetAllTransactionsUC
 
-  val mockTransactions = TransactionsLM(1.1, Currency.EUR, "Ex")
+  private val mockTransactions = TransactionsLM(1.1, Currency.EUR, "Ex")
 
   @Before
   fun setUp() {

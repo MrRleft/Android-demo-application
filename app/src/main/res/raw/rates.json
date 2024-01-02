@@ -1,0 +1,17 @@
+[
+  {
+    "from":"First Rate",
+    "rate":"1.2",
+    "to":"unknown1"
+  },
+  {
+    "from":"Second Rate",
+    "rate":"1.4",
+    "to":"unknown2"
+  },
+  {
+    "from":"Third Rate",
+    "rate":"1.0",
+    "to":"unknown3"
+  }
+]

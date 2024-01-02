@@ -1,0 +1,17 @@
+[
+  {
+    "amount":"500",
+    "currency":"€",
+    "sku":"12"
+  },
+  {
+    "amount":"700",
+    "currency":"€",
+    "sku":"122"
+  },
+  {
+    "amount":"800",
+    "currency":"€",
+    "sku":"125"
+  }
+]

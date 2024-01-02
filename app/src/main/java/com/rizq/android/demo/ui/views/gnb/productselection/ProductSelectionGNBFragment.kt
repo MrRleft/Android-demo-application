@@ -20,10 +20,13 @@ class ProductSelectionGNBFragment : Fragment(R.layout.fragment_product_selection
   private val recyclerAdapter = ListOfTransactionsAdapter(::onClickOnTransaction)
   private val mViewModel: ProductSelectionGNBFragmentViewmodel by viewModels()
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
     binding = FragmentProductSelectionGnbBinding.inflate(layoutInflater)
-    val view = binding.root
-    return view
+    return binding.root
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +41,7 @@ class ProductSelectionGNBFragment : Fragment(R.layout.fragment_product_selection
   }
 
   private fun initStates() {
-    mViewModel.state.observe(::getLifecycle, ::updateUI)
+    mViewModel.state.observe(viewLifecycleOwner, ::updateUI)
   }
 
   private fun updateUI(screenState: ScreenState<ProductSelectionGNBFragmentScreenState>) {

@@ -1,7 +1,7 @@
 package com.rizq.android.demo
 
 import com.rizq.android.data.datasources.RemoteDataSource
-import com.rizq.android.data.repositories.GNBRepository
+import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.local.*
 import kotlinx.coroutines.runBlocking

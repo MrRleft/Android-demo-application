@@ -24,7 +24,7 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
   }
 
   private fun initStates() {
-    mViewModel.state.observe(::getLifecycle, ::updateUI)
+    mViewModel.state.observe(viewLifecycleOwner, ::updateUI)
   }
 
   private fun updateUI(screenState: ScreenState<SplashScreenFragmentScreenState>) {

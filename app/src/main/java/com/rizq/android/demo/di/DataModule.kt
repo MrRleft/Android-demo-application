@@ -1,7 +1,7 @@
 package com.rizq.android.demo.di
 
 import com.rizq.android.data.datasources.*
-import com.rizq.android.data.repositories.GNBRepository
+import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.demo.data.local.RoomLocalDataSourceImplementation
 import com.rizq.android.demo.data.server.*
 import dagger.*

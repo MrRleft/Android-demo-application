@@ -20,15 +20,6 @@ class RetrofitDataSourceImplementation @Inject constructor(private val apiServic
     Either.Left(it)
   }
 
-  private inline fun <reified T> parseObjectToSM(result: Either.Right<ResponseWrapper<String>>, certainObject: String? = null) =
-    if (result.b.value != null) {
-      val json = if (certainObject != null) JSONObject(result.b.value!!).getString(certainObject) else result.b.value!!
-      when (val serverModel = jsonServerParser.genericParseDecodedString<T>(json)) {
-        is Either.Right<*> -> Either.Right(serverModel.b)
-        else -> serverModel
-      }
-    } else Either.Left(Failure.NullResult)
-
   private inline fun <reified T> returnArrayResults(domainModel: List<T>) = if (domainModel.isEmpty()) Either.Left(Failure.NullResult)
   else Either.Right(domainModel)
 

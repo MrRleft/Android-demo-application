@@ -20,7 +20,9 @@ data class RatesRoomModel(
     @ColumnInfo(name = "id")
     val id: Long = 0
 ): TransformableToDomainObject {
-    override fun toDomain() = RatesLM(Currency.valueOf(from), rate.toDouble(),  Currency.valueOf(to))
+    override fun toDomain() = RatesLM(Currency.stringToCurrency(from),
+        rate.toDouble(),
+        Currency.stringToCurrency(to))
 }
 
 @Entity(tableName = "Transactions")

@@ -1,5 +1,6 @@
 package com.rizq.android.demo.di
 
+import com.rizq.android.data.repositories.local.RoomRepository
 import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.usecases.gnb.*
 import dagger.*
@@ -16,10 +17,18 @@ object UseCaseModule {
 
   @Provides
   @Singleton
-  fun provideGetAllTransactionsUC(gnbRepository: GNBRepository) = GetAllTransactionsUC(gnbRepository)
+  fun provideGetAllTransactionsUC(gnbRepository: GNBRepository, roomRepository: RoomRepository) =
+    GetAllTransactionsUC(gnbRepository, roomRepository)
 
   @Provides
   @Singleton
-  fun provideGetCertainTransactionSumUC(gnbRepository: GNBRepository, bankersRoundingConversionSUC: BankersRoundingConversionSUC) =
-    GetCertainTransactionSumUC(gnbRepository, bankersRoundingConversionSUC)
+  fun providePopulateDatabaseUC(roomRepository: RoomRepository) =
+    PopulateDatabaseUC(roomRepository)
+
+  @Provides
+  @Singleton
+  fun provideGetCertainTransactionSumUC(gnbRepository: GNBRepository,
+                                        roomRepository: RoomRepository,
+                                        bankersRoundingConversionSUC: BankersRoundingConversionSUC) =
+    GetCertainTransactionSumUC(gnbRepository, roomRepository, bankersRoundingConversionSUC)
 }

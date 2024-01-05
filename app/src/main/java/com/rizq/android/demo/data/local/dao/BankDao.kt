@@ -1,33 +1,37 @@
 package com.rizq.android.demo.data.local.dao
 
-import androidx.room.*
-import com.rizq.android.domain.models.local.RatesLM
-import com.rizq.android.domain.models.local.TransactionsLM
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+import com.rizq.android.demo.data.local.entitities.RatesRoomModel
+import com.rizq.android.demo.data.local.entitities.TransactionsRoomModel
 
 @Dao
 interface BankDao {
 
     @Insert
-    suspend fun insertRate(rateEntity: RatesLM)
+    suspend fun insertRate(rateEntity: RatesRoomModel)
 
     @Insert
-    suspend fun insertTransaction(transactionEntity: TransactionsLM)
+    suspend fun insertTransaction(transactionEntity: TransactionsRoomModel)
 
     @Delete
-    suspend fun deleteRate(rateEntity: RatesLM)
+    suspend fun deleteRate(rateEntity: RatesRoomModel)
 
     @Delete
-    suspend fun deleteTransaction(transactionEntity: TransactionsLM)
+    suspend fun deleteTransaction(transactionEntity: TransactionsRoomModel)
 
     @Update
-    suspend fun updateRate(rateEntity: RatesLM)
+    suspend fun updateRate(rateEntity: RatesRoomModel)
 
     @Update
-    suspend fun updateTransaction(transactionEntity: TransactionsLM)
+    suspend fun updateTransaction(transactionEntity: TransactionsRoomModel)
 
     @Query("SELECT * FROM rates ORDER BY id ASC")
-    fun getAllRates(): List<RatesLM>
+    fun getAllRates(): List<RatesRoomModel>
 
     @Query("SELECT * FROM transactions ORDER BY sku ASC")
-    fun getAllTransactions(): List<TransactionsLM>
+    fun getAllTransactions(): List<TransactionsRoomModel>
 }

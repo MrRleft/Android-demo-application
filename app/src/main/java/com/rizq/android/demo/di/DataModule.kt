@@ -1,7 +1,10 @@
 package com.rizq.android.demo.di
 
+import androidx.room.Room
 import com.rizq.android.data.datasources.*
+import com.rizq.android.data.repositories.local.RoomRepository
 import com.rizq.android.data.repositories.server.GNBRepository
+import com.rizq.android.demo.data.local.BankDatabase
 import com.rizq.android.demo.data.local.RoomLocalDataSourceImplementation
 import com.rizq.android.demo.data.server.*
 import dagger.*
@@ -19,7 +22,9 @@ object DataModule {
 
   @Provides
   @Singleton
-  fun provideLocalDataSource(): LocalDataSource = RoomLocalDataSourceImplementation()
+  fun provideLocalDataSource(bankDatabase: BankDatabase,
+                             jsonServerParser: JsonServerParser): LocalDataSource =
+    RoomLocalDataSourceImplementation(bankDatabase, jsonServerParser)
 
   @Provides
   @Singleton
@@ -31,4 +36,8 @@ object DataModule {
   @Provides
   @Singleton
   fun provideGNBRepository(remoteDataSource: RemoteDataSource): GNBRepository = GNBRepository(remoteDataSource)
+
+  @Provides
+  @Singleton
+  fun provideRoomRepository(localDataSource: LocalDataSource): RoomRepository = RoomRepository(localDataSource)
 }

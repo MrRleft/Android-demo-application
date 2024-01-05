@@ -8,13 +8,14 @@ import com.rizq.android.domain.core.ScreenState
 import com.rizq.android.domain.models.local.TransactionsLM
 import com.rizq.android.usecases.gnb.GetAllTransactionsUC
 import com.rizq.android.usecases.gnb.GetCertainTransactionSumUC
+import com.rizq.android.usecases.gnb.PopulateDatabaseUC
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductSelectionGNBFragmentViewmodel @Inject constructor(private val getAllTransactions: GetAllTransactionsUC,
+                                                               private val populateDatabaseUC: PopulateDatabaseUC,
                                                                private val getCertainTransactionSumUC: GetCertainTransactionSumUC) : ViewModel() {
 
   private val _state = MutableLiveData<ScreenState<ProductSelectionGNBFragmentScreenState>>()
@@ -25,7 +26,7 @@ class ProductSelectionGNBFragmentViewmodel @Inject constructor(private val getAl
   fun getAllTransactions() {
     viewModelScope.launch {
       _state.value = ScreenState.Loading
-      getAllTransactions(GetAllTransactionsUC.Params).collect() { result ->
+      getAllTransactions(GetAllTransactionsUC.Params).collect { result ->
         result.fold({
           _state.value = (ScreenState.Render(ProductSelectionGNBFragmentScreenState.FailureObtainingData))
           Unit
@@ -33,6 +34,21 @@ class ProductSelectionGNBFragmentViewmodel @Inject constructor(private val getAl
           listOfTransactions.addAll(it)
           val resultList = listOfTransactions.map { it.sku }.distinct()
           _state.value = (ScreenState.Render(ProductSelectionGNBFragmentScreenState.SuccessLoadingTransactions(resultList)))
+          Unit
+        })
+      }
+    }
+  }
+
+  fun populateRoomDatabase(ratesData: String, transactionsData: String){
+    viewModelScope.launch {
+      _state.value = ScreenState.Loading
+      populateDatabaseUC(PopulateDatabaseUC.Params(ratesData, transactionsData)).collect { result ->
+        result.fold({
+          _state.value = (ScreenState.Render(ProductSelectionGNBFragmentScreenState.FailureObtainingData))
+          Unit
+        }, {
+          getAllTransactions()
           Unit
         })
       }

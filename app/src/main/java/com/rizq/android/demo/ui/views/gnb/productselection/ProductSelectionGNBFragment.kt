@@ -56,7 +56,11 @@ class ProductSelectionGNBFragment : Fragment(R.layout.fragment_product_selection
 
   private fun renderScreenState(renderState: ProductSelectionGNBFragmentScreenState) {
     when (renderState) {
-      ProductSelectionGNBFragmentScreenState.FailureObtainingData -> TODO("Create Error Message")
+      ProductSelectionGNBFragmentScreenState.FailureObtainingData -> {
+        val ratesText = context?.resources?.openRawResource(R.raw.rates)?.bufferedReader()?.readText()
+        val transactionsText = context?.resources?.openRawResource(R.raw.transactions)?.bufferedReader()?.readText()
+        mViewModel.populateRoomDatabase(ratesText.toString(), transactionsText.toString())
+      }
       is ProductSelectionGNBFragmentScreenState.SuccessCalculatingSum -> createDialogIndividualTransaction(renderState.amount,
         renderState.transactions)
       is ProductSelectionGNBFragmentScreenState.SuccessLoadingTransactions -> setTransactionsToRecycler(renderState.transactionsIds)

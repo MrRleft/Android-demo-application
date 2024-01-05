@@ -1,5 +1,6 @@
 package com.rizq.android.usecases.gnb
 
+import com.rizq.android.data.repositories.local.RoomRepository
 import com.rizq.android.data.repositories.server.GNBRepository
 import com.rizq.android.domain.core.*
 import com.rizq.android.domain.models.local.*
@@ -7,6 +8,7 @@ import com.rizq.android.domain.models.local.Currency.*
 import kotlinx.coroutines.flow.Flow
 
 class GetCertainTransactionSumUC(private val gnbRepository: GNBRepository,
+                                 private val roomRepository: RoomRepository,
                                  private val bankersRoundingConversionSUC: BankersRoundingConversionSUC) :
   UseCaseFlow<GetCertainTransactionSumUC.Params, GetCertainTransactionSumUC.ReturnParams>() {
 
@@ -14,18 +16,24 @@ class GetCertainTransactionSumUC(private val gnbRepository: GNBRepository,
   data class ReturnParams(val totalValue: Double, val operations: List<TransactionsLM>)
 
   override suspend fun execute(params: Params): Flow<Either<Failure, ReturnParams>> {
+
     return getRatesAndOperate(params.transaction).asFlow()
   }
 
   private suspend fun getRatesAndOperate(transactions: List<TransactionsLM>): Either<Failure, ReturnParams> {
     return when (val rates = gnbRepository.getRatesFull()) {
-      is Either.Left -> rates
+      is Either.Left -> {
+        return when (val localResult = roomRepository.getRates()) {
+          is Either.Right ->  calculateSumOfTransactions(transactions, localResult.b)
+          is Either.Left -> localResult
+        }
+      }
       is Either.Right -> calculateSumOfTransactions(transactions, rates.b)
     }
   }
 
   private fun calculateSumOfTransactions(transactions: List<TransactionsLM>, rates: List<RatesLM>): Either<Failure, ReturnParams> {
-    var totalSum: Double = 0.0
+    var totalSum = 0.0
 
     transactions.forEach { transaction ->
       totalSum += if (transaction.currency == EUR) transaction.amount

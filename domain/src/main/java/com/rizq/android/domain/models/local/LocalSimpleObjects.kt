@@ -18,4 +18,15 @@ data class TransactionsLM(
 
 enum class Currency (val value: String){
   USD("\$"), AUD("A\$"), EUR("€"), CAD("Can\$");
+
+  companion object {
+    fun stringToCurrency(value: String): Currency {
+      return when (value) {
+        "€" -> EUR
+        "Can\$" -> CAD
+        "A\$" -> AUD
+        else -> USD
+      }
+    }
+  }
 }

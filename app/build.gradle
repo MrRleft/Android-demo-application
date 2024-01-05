@@ -69,6 +69,7 @@ dependencies {
 
   implementation androidX.appCompat
   implementation androidX.room
+  implementation androidX.room_ktx
   implementation androidX.constraintlayout
   implementation androidX.navigation_fragment
   implementation androidX.navigation_ui
@@ -76,6 +77,7 @@ dependencies {
   implementation androidX.viewmodel
   implementation androidX.livedata
   implementation androidX.viewpager
+  kapt androidX.room_compiler
 
   testImplementation test.junit
   testImplementation test.coroutines_test

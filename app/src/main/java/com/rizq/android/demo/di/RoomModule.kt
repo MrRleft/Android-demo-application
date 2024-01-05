@@ -7,6 +7,7 @@ import com.rizq.android.demo.data.local.dao.BankDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -15,11 +16,11 @@ import javax.inject.Singleton
 object RoomModule {
     @Provides
     @Singleton
-    fun provideAppDatabase(context: Context): BankDatabase {
+    fun provideAppDatabase(@ApplicationContext context: Context): BankDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             BankDatabase::class.java,
-            "app_database"
+            "bank_database"
         ).build()
     }
 

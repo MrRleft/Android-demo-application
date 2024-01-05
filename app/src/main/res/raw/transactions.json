@@ -1,17 +1,17 @@
 [
   {
     "amount":"500",
-    "currency":"€",
+    "currency":"$",
     "sku":"12"
   },
   {
     "amount":"700",
-    "currency":"€",
+    "currency":"$",
     "sku":"122"
   },
   {
     "amount":"800",
-    "currency":"€",
+    "currency":"$4",
     "sku":"125"
   }
 ]

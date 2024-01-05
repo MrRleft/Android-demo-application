@@ -21,7 +21,7 @@ buildscript {
     lifecycle_version = '2.6.2'
     retrofit_version = '2.9.0'
     gson_version = '2.10.1'
-    room_version = '2.4.0'
+    room_version = '2.6.0'
     circle_image_version = "3.1.0"
     material_version = '1.12.0-alpha02'
     dexter_version = "6.0.2"
@@ -66,7 +66,8 @@ buildscript {
         legacy             : "androidx.legacy:legacy-support-v4:$legacy_version",
         livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
         room               : "androidx.room:room-runtime:$room_version",
-        room_compiler      : "androidx.room:room-compiler:$room_version"
+        room_compiler      : "androidx.room:room-compiler:$room_version",
+        room_ktx      : "androidx.room:room-ktx:$room_version"
     ]
 
     test = [

@@ -3,7 +3,6 @@ package com.rizq.android.data.repositories.local
 import com.rizq.android.data.datasources.LocalDataSource
 import com.rizq.android.domain.core.Either
 import com.rizq.android.domain.core.Failure
-import com.rizq.android.domain.models.local.Currency
 import com.rizq.android.domain.models.local.RatesLM
 import com.rizq.android.domain.models.local.TransactionsLM
 
